@@ -1,11 +1,16 @@
-import './App.css';
+import { useState } from "react";
+import Folder from "./components/Folder";
+import "./App.css";
+import data from "./data/data";
 
-function App() {
+const App = () => {
+  const [sidebarData, setSidebarData] = useState(data);
+
   return (
-    <div className="app">
-      App
+    <div className="App">
+      <Folder data={sidebarData} />
     </div>
   );
 }
 
-export default App;
+export default App
