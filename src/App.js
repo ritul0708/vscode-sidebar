@@ -7,7 +7,7 @@ import "./App.css";
 const App = () => {
   const [sidebarData, setSidebarData] = useState(data);
   // intializing custom hook
-  const { insertItem } = useTraverseTree();
+  const { insertItem, deleteItem } = useTraverseTree();
 
   // function which will be pass down to Folder component to get the data
   const handleInsertItem = (folderId, item, isFolder) => {
@@ -17,9 +17,18 @@ const App = () => {
     setSidebarData(finalTree);
   }
 
+  const handleDeleteItem = () => {
+    const finalTree = deleteItem(sidebarData, item.id);
+    setSidebarData(finalTree);
+  }
+
   return (
     <div className="App">
-      <Folder handleInsertItem={handleInsertItem} data={sidebarData} />
+      <Folder 
+        handleInsertItem={handleInsertItem} 
+        handleDeleteItem={handleDeleteItem} 
+        data={sidebarData} 
+      />
     </div>
   );
 }

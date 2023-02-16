@@ -12,7 +12,7 @@ const Folder = ({ handleInsertItem, data }) => {
   });
 
 
-  // TFunction to handle things that will happen when icon will clicked
+  // Function to handle things that will happen when icon will clicked
   const handleNewItem = (e, isFolder) => {
     e.stopPropagation();  // to stop showInput while clicking on icons
     setExpand(true);  //to open other items when clicking on icons   
@@ -32,6 +32,10 @@ const Folder = ({ handleInsertItem, data }) => {
       // after clicking enter input box should be gone
       setShowInput({...showInput, visible: false});
     }
+  }
+
+  const onDeleteItem = (e) => {
+    const newTree = deleteItem(tree, itemId)
   }
 
 

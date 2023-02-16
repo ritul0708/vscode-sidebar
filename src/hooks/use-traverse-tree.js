@@ -29,7 +29,25 @@ const useTraverseTree = () => {
   }
 
 
-  const deleteItem = () => {};
+  const deleteItem = (tree, itemId) => {
+    // check if the current node is the one to be deleted
+    if (tree.id === itemId) {
+      return null;
+    }
+  
+    // create a new list of items without the deleted item
+    const newItems = tree.items.filter((item) => item.id !== itemId);
+  
+    // create a new copy of the tree with the updated list of items
+    const newTree = { ...tree, items: newItems };
+  
+    // recursively call the deleteItem function on each child node
+    newTree.items = newTree.items.map((item) =>
+      deleteItem(item, itemId)
+    );
+
+    return newTree;
+  }
 
   const updateItem = () => {};
 
